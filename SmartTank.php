@@ -1,5 +1,67 @@
 <?php
-  include_once 'dbconnect.php';
+    $servername = "172.17.0.31";
+    $username = "u1535530_root";
+    $password = "9029Izzo";
+    $dbname = "db1535530_SmartTank";
+
+   // Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT email FROM OilProviders";
+$dbemails = mysqli_query($conn, $sql);
+$localemails = array();
+
+if (mysqli_num_rows($dbemails) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($dbemails)) {
+        $localemails[] = $row["email"];
+    }
+}
+
+
+    if(isset($_POST['submit'])){
+    
+    $to = $localemails; //emails in DB of local oil providers
+    $from = $_POST['email']; // this is the users Email address
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $location = $_POST['location'];
+    $quantity = $_POST['quantity'];
+    $subject = "Smart Tank Oil Refill Quote Request";
+    $subject2 = "Copy of your Smart Tank Oil Refill Quote Request";
+    $message = $first_name . " " . $last_name . " is looking for a refill of oil in " . $location . " to the value of " . $quantity . "\n\n" . "Could you please provide them with a quote for " . $quantity . " of oil by emailing " . $from . "\n\n Many thanks, \n Smart Tank";
+    $message2 = "Here is a copy of your message.\n" . $message;
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo "Oil refill quote request sent. Thank you " . $first_name . ", your local oil providers will be in contact with you soon.";
+    //header('Location: quote.php'); 
+    }
+
+
+    /*if(isset($_POST['submit'])){
+    $to = "email@example.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $subject = "Form submission";
+    $subject2 = "Copy of your form submission";
+    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['message'];
+    $message2 = "Here is a copy of your message " . $first_name . "\n\n" . $_POST['message'];
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
+    // You can also use header('Location: thank_you.php'); to redirect to another page.
+    }*/
 ?>
 
 
@@ -71,9 +133,45 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
     
- <?php 
-   echo "Test";
-   ?>
+   <?php 
+    $servername = "172.17.0.31";
+    $username = "u1535530_root";
+    $password = "9029Izzo";
+    $dbname = "db1535530_SmartTank";
+
+   // Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT id, name, location FROM OilProviders";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "id: " . $row["id"]. " - Name: " . $row["name"]. " " . $row["location"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+mysqli_close($conn);
+
+?>
+
+<form action="" method="post">
+First Name: <input type="text" name="first_name"><br>
+Last Name: <input type="text" name="last_name"><br>
+Location: <input type="text" name="location"><br>
+Email: <input type="text" name="email"><br>
+Quantity of Oil requested in €: <input type="text" name="quantity"><br>
+<input type="submit" name="submit" value="Submit">
+</form>
+
+  
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
