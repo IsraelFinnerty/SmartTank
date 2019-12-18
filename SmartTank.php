@@ -139,7 +139,8 @@ input[type=button], input[type=submit], input[type=reset] {
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/920200/widgets/122737"></iframe>
+    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/920200/widgets/130888"></iframe>
+
 
     
     <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/920200/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
