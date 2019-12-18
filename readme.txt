@@ -11,7 +11,7 @@ When oil is running low the user will be asked if they would like to receive quo
 
 ## Getting Started
 
-Download all resources from GitHub Repo. Connect the RCWL - 1601 or HC-SR04 to the Raspberry Pi as in the presentation slides. If using the HC-SR04 Sensor connect with Breadboard and Resistors (330? & 470?) as shown. Ensure the Raspberry Pi is connected to the home 802.11 WiFi router. Affix the sensor and connected Pi to the inside of the oil tank fuel cap. Ensure that the sensor is positioned to pointed down toward the bottom of the tank. Secure by soldering or taping the devices to the inside of the oil cap. Replace the oil cap bank onto your heating tank.
+Download all resources from GitHub Repo. Connect the RCWL - 1601 or HC-SR04 to the Raspberry Pi as in the presentation slides. If using the HC-SR04 Sensor connect with Breadboard and Resistors (330? & 470?) as shown. Ensure the Raspberry Pi is connected to the home 802.11 WiFi router. Affix the sensor and connected Pi to the inside of the oil tank fuel cap. Ensure that the sensor is positioned to pointed down toward the bottom of the tank. Secure by soldering or taping the devices to the inside of the oil cap. Replace the oil cap back onto your heating tank.
 
 ### Prerequisites
 
